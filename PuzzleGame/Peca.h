@@ -12,9 +12,10 @@
     
 }
 
+@property(nonatomic, assign) int type;
 @property(nonatomic, assign) int posX;
 @property(nonatomic, assign) int posY;
+@property(nonatomic, assign) NSString* imagem;
 
 - (id)initWithPosition:(CGPoint) pos;
-
 @end

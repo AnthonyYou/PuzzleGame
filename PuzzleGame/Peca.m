@@ -10,14 +10,15 @@
 
 @implementation Peca
 
-@synthesize posX,posY;
+@synthesize type,posX,posY,imagem;
 
 - (id)initWithPosition:(CGPoint) pos{
     
-    if( (self= [super initWithFile:@"DF_A_OFF.gif"])) {    
+    if( (self= [super initWithFile:imagem])) {  
         self.position = pos;
         
-
+        
+        //[self setTexture:[[CCTextureCache sharedTextureCache] addImage:@"DF_A_OFF.gif"]];
         
         NSLog(@"x:%i-y:%i",(int)self.position.x,(int)self.position.y);
         

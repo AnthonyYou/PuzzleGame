@@ -10,6 +10,7 @@
 
 @interface Game : CCLayer {
     Peca *peca;
+    Peca *pecax;
 }
 +(CCScene *) scene;
 -(void)montaTabuleiro:(CGSize) size;
