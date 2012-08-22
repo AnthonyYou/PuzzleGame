@@ -10,9 +10,10 @@
 
 @interface Game : CCLayer {
     Peca *peca;
-    Peca *pecax;
+    NSMutableArray *board;
 }
 +(CCScene *) scene;
 -(void)montaTabuleiro:(CGSize) size;
-
+-(Peca*)getEmptyPiece;
+-(Peca*)getNextPiecePosition:(int)x y:(int)y;
 @end

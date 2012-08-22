@@ -43,7 +43,7 @@
         
         [self montaTabuleiro:size];
     
-        //[self schedule:@selector(update:)];
+        [self schedule:@selector(update:)];
         
     }
     return self;
@@ -51,87 +51,137 @@
 
 -(void)montaTabuleiro:(CGSize) size{
     
-
-    pecax = [Peca alloc];
-    
-    pecax.type = 1;
-    pecax.imagem = @"DF_B_ON.gif";
-    
-    pecax = [pecax initWithPosition:ccp(103.0,177.0)];
-    
-    
     //peca = [[Peca alloc] initWithPosition:ccp(103.0,275.0)];
-    pecax.posX = 9;
-    pecax.posY = 9;
-    
     //CCSprite *peca = [CCSprite spriteWithFile:@"DF_A_OFF.gif"];
     //peca.position = ccp( size.width/3, size.height/2 );
-    [self addChild:pecax];
-    
     
     
     NSLog(@"width:%f-height:%f",size.width,size.height);
-    NSLog(@"x-->%i,y-->%i",[peca posX], [peca posY]);
- 
+    
+    
+    
+    board = [[NSMutableArray alloc] init];
     
     for (int x=1; x<4; x++) {
         for (int y=1; y<4; y++) {
                 
             peca = [Peca alloc];
             
+            
             peca.type = 1;
-            peca.imagem = @"DF_A_OFF.gif";
+            
+            //temporary fixed boad pieces
+            if (x==1)
+              peca.imagem = @"DF_A_";
+            if (x==2)
+                peca.imagem = @"DF_B_";
+            if (x==3)
+                peca.imagem = @"DF_C_";
+            if ((x==1) && (y==1))
+                peca.imagem = @"DF_D_";
+            if ((x==1) && (y==2))
+                peca.imagem = @"DF_E_";
+            if ((x==1) && (y==3)){
+                peca.imagem = @"DF_VAZIO.gif";
+                peca.type = 0;
+            }
             
             peca = [peca initWithPosition:ccp(((35.0)*x)+94,((33.0)*y)+177)];
             
             peca.posX = x;
             peca.posY = y;
             
+            [board addObject:peca];
+            
             [self addChild:peca];
             NSLog(@"#%i%i",x,y);
             
         }
     }
+}
+
+-(Peca*)getNextPiecePosition:(int)x y:(int)y{
+    
+    Peca *emptyPiece = [self getEmptyPiece];
+    if (x == [emptyPiece posX]){
+        if (y+1 == [emptyPiece posY]){
+            return emptyPiece;
+        }else if (y-1 == [emptyPiece posY]){
+            return emptyPiece;
+        }
+    }else if(y == [emptyPiece posY]){
+        if (x+1 == [emptyPiece posX]){
+            return emptyPiece;
+        }else if (x-1 == [emptyPiece posX]){
+            return emptyPiece;
+        }
+    }
+    
+    return nil;
+}
+
+-(Peca*)getEmptyPiece{
     
     
+    for(Peca *p in board){
+        
+        if ([p type] == 0){
+            return p;
+        }
+    }
+    
+    return nil;
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Touches begin");
     
-    //NSArray *touchArray = [touches allObjects];
-    
-    CCSprite *pecat = [CCSprite spriteWithFile:@"DF_A_OFF.gif"];
-    pecat.position = ccp( 100, 100 );
-    [self addChild:pecat];
-    
-    UITouch *pecaTouch = [touches anyObject];
-    //UITouch *finger = [touchArray objectAtIndex:0];
-    
-    CGPoint point = [pecaTouch locationInView:[pecaTouch view]];
-    CGPoint location = [[CCDirector sharedDirector] convertToGL:point];
-    
-    CGRect rect = CGRectMake(pecat.position.x - 20, pecat.position.y -20 , 40.0 , 40.0);
-    
-    
-   // NSLog(@"location-x:%-fy:%f",location.x,location.y);
-   // NSLog(@"rect-x:%-fy:%f",rect.origin.x,rect.origin.y);
-    //
+    for(Peca *p in board){
 
+        UITouch *pieceTouch = [touches anyObject];
     
+        CGPoint point = [pieceTouch locationInView:[pieceTouch view]];
+        CGPoint location = [[CCDirector sharedDirector] convertToGL:point];
+        CGRect rect = CGRectMake(p.position.x - 20, p.position.y -20 , 40.0 , 40.0);
     
-    if(CGRectContainsPoint(rect, location)){
-        NSLog(@"touched PECAX ################");
+        if(CGRectContainsPoint(rect, location)){
+            // no (empty) piece
+            if (p.type != 0){
+                NSLog(@"[TOUCHED PIECE] x:%i y:%i", p.posX, p.posY);  
+            
+                Peca *emptyPiece = [self getNextPiecePosition:p.posX y:p.posY];
+              
+                if (emptyPiece != nil){
+                    CGPoint location = p.position;
+                  
+                    int posXTemp = [p posX];
+                    int posYTemp = [p posY];
+                  
+                    [p setPosition:[emptyPiece position]];
+                  
+                    [p setPosX:[emptyPiece posX]];
+                    [p setPosY:[emptyPiece posY]];
+                    [emptyPiece setPosition:location];
+                    [emptyPiece setPosX:posXTemp];
+                    [emptyPiece setPosY:posYTemp];
+                  
+                    //PIECE LIGHT ON
+                    
+                    int initialPointX = 1; 
+                    int initialPointY = 2; 
+                    
+                    for(Peca *p in board){
+                        
+                        if ((p.posY == initialPointY)&&(p.posX==initialPointX)){
+                            [p lightOn];
+                        }else{
+                            [p lightOff];
+                        }
+                        
+                    }
+                }
+            }
+        }
     }
-    
-    //
-    
-    
-    
-    //
-    
-    
-    NSLog(@"x:%f,y:%f",point.x,point.y);
 }
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
@@ -139,9 +189,11 @@
 }
 
 -(void)update:(ccTime)dt{
-    NSLog(@"update...");
-    //atualiza caminho
-    //verifica vitoria
+    //NSLog(@"update...");
+    
+    
+    //refresh path
+    //vitory verify
 }
 
 @end

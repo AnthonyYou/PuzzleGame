@@ -18,4 +18,7 @@
 @property(nonatomic, assign) NSString* imagem;
 
 - (id)initWithPosition:(CGPoint) pos;
+- (void)lightOn;
+- (void)lightOff;
+
 @end
