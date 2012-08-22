@@ -3,7 +3,6 @@
 //  PuzzleGame
 //
 //  Created by Roberto Capelo on 21/08/12.
-//  Copyright Voice Technology 2012. All rights reserved.
 //
 
 #ifndef __GAME_CONFIG_H
