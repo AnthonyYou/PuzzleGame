@@ -249,11 +249,7 @@
     int finalPointX = 3; 
     int finalPointY = 1; 
     
-    int pox = [piece posX];
-    int poy = [piece posY];
-    NSLog(@"-->%i-%i",pox,poy);
-    
-    if ((pox == finalPointX) && (poy == finalPointY)){
+    if (([piece posX] == finalPointX) && ([piece posY] == finalPointY)){
         NSLog(@"%@", @"######### [ VITORY ] #########");
         return YES;
     }
@@ -298,7 +294,12 @@
             if ([piece lightOn:entry]){
                 
                 if ([self vitoryVerify:piece]){
-                    [[CCDirector sharedDirector] pushScene:[Vitory scene]];
+                    
+                    
+                    NSLog(@"moves:%i",moves);
+                    Vitory *vitory = [Vitory nodeWithGameMoves:moves];
+                    
+                    [[CCDirector sharedDirector] pushScene:vitory];
                 }else{
                     NSString *connectionOut =  [piece getOutConnection:entry]; 
                     Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut];

@@ -10,29 +10,31 @@
 
 @implementation Vitory
 
-+(CCScene *) scene
-{
-	CCScene *scene = [CCScene node];
-	Vitory *layer = [Vitory node];
-	[scene addChild: layer];
-	return scene;
+
++(id)nodeWithGameMoves:(int)moves{
+    
+    return [[[self alloc] initWithGameMoves:moves]autorelease];
 }
 
-
--(id) init
+-(id) initWithGameMoves:(int)moves
 {
 	if( (self=[super init])) {
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
         CCMenuItemImage *start = [CCMenuItemImage itemFromNormalImage:@"botaoStart.GIF" selectedImage:@"botaoStartB.gif" target:self selector:@selector(backMenu:)];
-        CCMenu *menu = [CCMenu menuWithItems:start, nil];
+        
+        CCMenuItemImage *next = [CCMenuItemImage itemFromNormalImage:@"botaox.GIF" selectedImage:@"botaox.gif" target:self selector:@selector(nextLevel:)];
+        
+        CCMenu *menu = [CCMenu menuWithItems:start,next, nil];
         menu.position = ccp( 69 , (size.height/3)-50  );
+        
+        [menu alignItemsVertically];
+        
         [self addChild: menu];
         
         
-        
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Congratulations" fontName:@"Marker Felt" fontSize:64];
+		CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"moves:%i",moves] fontName:@"Marker Felt" fontSize:34];
 		label.position =  ccp( size.width /2 , size.height/2 );
 		[self addChild: label];
 	}
@@ -42,6 +44,11 @@
 -(void) backMenu: (CCMenuItem *) menuItem{
     [[CCDirector sharedDirector] pushScene:[Menu scene]];
 }
+
+-(void) nextLevel: (CCMenuItem *) menuItem{
+    [[CCDirector sharedDirector] pushScene:[Menu scene]];
+}
+
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc

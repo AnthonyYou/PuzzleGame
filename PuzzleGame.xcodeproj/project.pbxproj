@@ -402,7 +402,7 @@
 		DA862EC515E3C14800C31772 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DA862EC715E3C14800C31772 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DA862EC815E3C14800C31772 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		DA862ECA15E3C14800C31772 /* Vitory.h */ = {isa = PBXFileReference; path = Vitory.h; sourceTree = "<group>"; };
+		DA862ECA15E3C14800C31772 /* Vitory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vitory.h; sourceTree = "<group>"; };
 		DA862ECB15E3C14800C31772 /* Vitory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vitory.m; sourceTree = "<group>"; };
 		DA862ECD15E3C14800C31772 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		DA862ED415E4142B00C31772 /* borda3x3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = borda3x3.gif; sourceTree = "<group>"; };
@@ -507,12 +507,12 @@
 				DA4F273315E438E800B9C3D6 /* Game.m */,
 				DA862F2015E414A800C31772 /* Menu.h */,
 				DA862F2115E414A800C31772 /* Menu.m */,
+				DA862ECA15E3C14800C31772 /* Vitory.h */,
+				DA862ECB15E3C14800C31772 /* Vitory.m */,
 				DA862EC415E3C14800C31772 /* AppDelegate.h */,
 				DA862EC515E3C14800C31772 /* AppDelegate.m */,
 				DA862EC715E3C14800C31772 /* RootViewController.h */,
 				DA862EC815E3C14800C31772 /* RootViewController.m */,
-				DA862ECA15E3C14800C31772 /* Vitory.h */,
-				DA862ECB15E3C14800C31772 /* Vitory.m */,
 				DA862ECD15E3C14800C31772 /* GameConfig.h */,
 				DA862D7315E3C14500C31772 /* Resources */,
 				DA862D8715E3C14600C31772 /* libs */,

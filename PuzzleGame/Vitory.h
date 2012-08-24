@@ -10,11 +10,9 @@
 #import "cocos2d.h"
 #import "Menu.h"
 
-@interface Vitory : CCLayer
+@interface Vitory : CCScene
 {
 }
-
-// returns a CCScene that contains the HelloWorldLayer as the only child
-+(CCScene *) scene;
-
++(id)nodeWithGameMoves:(int)moves;
+-(id) initWithGameMoves:(int)moves;
 @end
