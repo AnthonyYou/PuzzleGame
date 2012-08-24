@@ -123,7 +123,7 @@
 		DA862EC315E3C14800C31772 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA862EC215E3C14800C31772 /* main.m */; };
 		DA862EC615E3C14800C31772 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA862EC515E3C14800C31772 /* AppDelegate.m */; };
 		DA862EC915E3C14800C31772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA862EC815E3C14800C31772 /* RootViewController.m */; };
-		DA862ECC15E3C14800C31772 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA862ECB15E3C14800C31772 /* HelloWorldLayer.m */; };
+		DA862ECC15E3C14800C31772 /* Vitory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA862ECB15E3C14800C31772 /* Vitory.m */; };
 		DA862EFA15E4142B00C31772 /* borda3x3.gif in Resources */ = {isa = PBXBuildFile; fileRef = DA862ED415E4142B00C31772 /* borda3x3.gif */; };
 		DA862EFB15E4142B00C31772 /* botao.GIF in Resources */ = {isa = PBXBuildFile; fileRef = DA862ED515E4142B00C31772 /* botao.GIF */; };
 		DA862EFC15E4142B00C31772 /* botaoDesistir.gif in Resources */ = {isa = PBXBuildFile; fileRef = DA862ED615E4142B00C31772 /* botaoDesistir.gif */; };
@@ -402,8 +402,8 @@
 		DA862EC515E3C14800C31772 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DA862EC715E3C14800C31772 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DA862EC815E3C14800C31772 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		DA862ECA15E3C14800C31772 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		DA862ECB15E3C14800C31772 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		DA862ECA15E3C14800C31772 /* Vitory.h */ = {isa = PBXFileReference; path = Vitory.h; sourceTree = "<group>"; };
+		DA862ECB15E3C14800C31772 /* Vitory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vitory.m; sourceTree = "<group>"; };
 		DA862ECD15E3C14800C31772 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		DA862ED415E4142B00C31772 /* borda3x3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = borda3x3.gif; sourceTree = "<group>"; };
 		DA862ED515E4142B00C31772 /* botao.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = botao.GIF; sourceTree = "<group>"; };
@@ -511,8 +511,8 @@
 				DA862EC515E3C14800C31772 /* AppDelegate.m */,
 				DA862EC715E3C14800C31772 /* RootViewController.h */,
 				DA862EC815E3C14800C31772 /* RootViewController.m */,
-				DA862ECA15E3C14800C31772 /* HelloWorldLayer.h */,
-				DA862ECB15E3C14800C31772 /* HelloWorldLayer.m */,
+				DA862ECA15E3C14800C31772 /* Vitory.h */,
+				DA862ECB15E3C14800C31772 /* Vitory.m */,
 				DA862ECD15E3C14800C31772 /* GameConfig.h */,
 				DA862D7315E3C14500C31772 /* Resources */,
 				DA862D8715E3C14600C31772 /* libs */,
@@ -1100,7 +1100,7 @@
 				DA862EC315E3C14800C31772 /* main.m in Sources */,
 				DA862EC615E3C14800C31772 /* AppDelegate.m in Sources */,
 				DA862EC915E3C14800C31772 /* RootViewController.m in Sources */,
-				DA862ECC15E3C14800C31772 /* HelloWorldLayer.m in Sources */,
+				DA862ECC15E3C14800C31772 /* Vitory.m in Sources */,
 				DA862F2215E414A800C31772 /* Menu.m in Sources */,
 				DA4F273415E438E800B9C3D6 /* Game.m in Sources */,
 				DA4F273815E4415400B9C3D6 /* Peca.m in Sources */,

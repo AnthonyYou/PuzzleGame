@@ -9,7 +9,6 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldLayer.h"
 #import "Menu.h"
 #import "RootViewController.h"
 

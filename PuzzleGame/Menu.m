@@ -6,7 +6,7 @@
 //
 
 #import "Menu.h"
-#import "HelloWorldLayer.h"
+#import "Vitory.h"
 #import "Game.h"
 
 @implementation Menu
@@ -49,8 +49,8 @@
 }
 
 -(void) exitGame: (CCMenuItem *) menuItem{
-    NSLog(@"exit game");
-    [[CCDirector sharedDirector] pushScene:[HelloWorldLayer scene]];
+    NSLog(@"vitory screen");
+    [[CCDirector sharedDirector] pushScene:[Vitory scene]];
 }
 
 

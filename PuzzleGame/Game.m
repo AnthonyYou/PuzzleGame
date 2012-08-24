@@ -25,14 +25,23 @@
     if( (self=[super init])) {
         
         CGSize size = [[CCDirector sharedDirector] winSize];
- 
         
         CCSprite *fundo = [CCSprite spriteWithFile:@"tabuleiro.gif" rect:CGRectMake(0, 0, size.width, size.height)];
         fundo.position = ccp( size.width/2, size.height/4 );
         [self addChild:fundo];
- 
+
         
-        totalMoves = [CCLabelTTF labelWithString:@"moves: " fontName:@"Marker Felt" fontSize:14];
+        CCMenuItemImage *giveup = [CCMenuItemImage itemFromNormalImage:@"botaoDesistir.gif" selectedImage:@"botaoDesistir.gif" target:self selector:@selector(backMenu:)];
+        
+        CCMenu *menu = [CCMenu menuWithItems:giveup, nil];
+        
+        menu.position = ccp( 69 , (size.height/3)-50  );
+        
+        //[menu alignItemsVertically];
+        [self addChild: menu];
+
+        
+        totalMoves = [CCLabelTTF labelWithString:@"moves: 0" fontName:@"Marker Felt" fontSize:14];
         totalMoves.position =  ccp( 60 , size.height -147 );
         [self addChild: totalMoves];
         
@@ -289,7 +298,7 @@
             if ([piece lightOn:entry]){
                 
                 if ([self vitoryVerify:piece]){
-                    [[CCDirector sharedDirector] pushScene:[HelloWorldLayer scene]];
+                    [[CCDirector sharedDirector] pushScene:[Vitory scene]];
                 }else{
                     NSString *connectionOut =  [piece getOutConnection:entry]; 
                     Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut];
@@ -304,6 +313,10 @@
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     NSLog(@"Touches ended");
+}
+
+-(void) backMenu: (CCMenuItem *) menuItem{
+    [[CCDirector sharedDirector] pushScene:[Menu scene]];
 }
 
 -(void)update:(ccTime)dt{

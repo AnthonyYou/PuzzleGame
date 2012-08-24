@@ -7,7 +7,8 @@
 
 #import "cocos2d.h"
 #import "Peca.h"
-#import "HelloWorldLayer.h"
+#import "Vitory.h"
+#import "Menu.h"
 
 @interface Game : CCLayer {
     NSMutableArray *board;
@@ -18,10 +19,10 @@
 -(void)montaTabuleiro:(CGSize) size;
 -(Peca*)getEmptyPiece;
 -(Peca*)getNextPiecePosition:(int)x y:(int)y;
--(Peca*) connectionsPath:(Peca*) piece entry:(NSString*) entry;
+-(Peca*)connectionsPath:(Peca*) piece entry:(NSString*) entry;
 -(Peca*)getNextPieceConnection:(Peca*)piece outconnection:(NSString*)outconnection;
 -(Peca*)getPieceByPosition:(int)x y:(int)y;
 -(Peca*)getFirstPiece;
 -(void)lightOffPieces;
--(BOOL) vitoryVerify:(Peca*)piece;
+-(BOOL)vitoryVerify:(Peca*)piece;
 @end
