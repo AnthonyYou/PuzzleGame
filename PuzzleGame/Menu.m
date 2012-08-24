@@ -45,6 +45,29 @@
 
 -(void) startGame: (CCMenuItem *) menuItem{
     NSLog(@"start game");
+    
+    NSData *plistData;
+    NSString *error;
+    NSPropertyListFormat format;
+    id plist;
+    
+    NSString *localizedPath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
+    
+    plistData = [NSData dataWithContentsOfFile:localizedPath];
+    
+    plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
+    
+    NSDictionary *level1 = plist;
+    
+    
+    level1 = [level1 objectForKey:@"level1"];
+    
+    for (NSString *config in level1){
+            NSLog(@"%@",config);
+    }
+    
+    NSLog(@"%@",plist);
+    
     [[CCDirector sharedDirector] pushScene:[Game scene]];
 }
 

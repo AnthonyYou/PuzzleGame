@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA4F273415E438E800B9C3D6 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4F273315E438E800B9C3D6 /* Game.m */; };
 		DA4F273815E4415400B9C3D6 /* Peca.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4F273715E4415400B9C3D6 /* Peca.m */; };
+		DA567F5015E8382300DBC7D0 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA567F4F15E8381F00DBC7D0 /* levels.plist */; };
 		DA862D6315E3C14500C31772 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA862D6215E3C14500C31772 /* QuartzCore.framework */; };
 		DA862D6515E3C14500C31772 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA862D6415E3C14500C31772 /* OpenGLES.framework */; };
 		DA862D6715E3C14500C31772 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA862D6615E3C14500C31772 /* OpenAL.framework */; };
@@ -170,6 +171,7 @@
 		DA4F273315E438E800B9C3D6 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		DA4F273615E4415300B9C3D6 /* Peca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peca.h; sourceTree = "<group>"; };
 		DA4F273715E4415400B9C3D6 /* Peca.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peca.m; sourceTree = "<group>"; };
+		DA567F4F15E8381F00DBC7D0 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
 		DA862D5E15E3C14500C31772 /* PuzzleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA862D6215E3C14500C31772 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DA862D6415E3C14500C31772 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -535,6 +537,7 @@
 				DA862D8215E3C14500C31772 /* Icon@2x.png */,
 				DA862D8415E3C14500C31772 /* Info.plist */,
 				DA862D8515E3C14500C31772 /* iTunesArtwork */,
+				DA567F4F15E8381F00DBC7D0 /* levels.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				DA862F1D15E4142B00C31772 /* tabuleiro4x4.gif in Resources */,
 				DA862F1E15E4142B00C31772 /* tabuleiromenu.GIF in Resources */,
 				DA862F1F15E4142B00C31772 /* Thumbs.db in Resources */,
+				DA567F5015E8382300DBC7D0 /* levels.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
