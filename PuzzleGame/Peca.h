@@ -9,7 +9,7 @@
 
 
 @interface Peca : CCSprite {
-    
+    NSMutableDictionary *connections;
 }
 
 @property(nonatomic, assign) int type;
@@ -18,7 +18,9 @@
 @property(nonatomic, assign) NSString* imagem;
 
 - (id)initWithPosition:(CGPoint) pos;
-- (void)lightOn;
+- (BOOL)lightOn:(NSString*)entry;
 - (void)lightOff;
-
+- (void)setConnection:(int) right left:(int)left up:(int)up down:(int)down;
+- (NSMutableDictionary*) getConnections;
+- (NSString*)getOutConnection:(NSString*)entry;
 @end

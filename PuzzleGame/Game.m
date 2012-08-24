@@ -42,7 +42,9 @@
         [self setIsTouchEnabled:YES];
         
         [self montaTabuleiro:size];
-    
+        
+        [self connectionsPath:[self getFirstPiece] entry:nil];
+        
         [self schedule:@selector(update:)];
         
     }
@@ -59,7 +61,7 @@
     NSLog(@"width:%f-height:%f",size.width,size.height);
     
     
-    
+    Peca *peca;
     board = [[NSMutableArray alloc] init];
     
     for (int x=1; x<4; x++) {
@@ -71,21 +73,34 @@
             peca.type = 1;
             
             //temporary fixed boad pieces
-            if (x==1)
-              peca.imagem = @"DF_A_";
-            if (x==2)
-                peca.imagem = @"DF_B_";
-            if (x==3)
+            if ((x==2) && (y==2)){
+                peca.imagem = @"DF_A_";
+                [peca setConnection:0 left:0 up:1 down:1];
+            }
+            if ((x==2) && (y==1)){
                 peca.imagem = @"DF_C_";
-            if ((x==1) && (y==1))
+                [peca setConnection:1 left:0 up:1 down:0];
+            }
+            if (x==3){
+                peca.imagem = @"DF_B_";
+                [peca setConnection:1 left:1 up:0 down:0];
+            }
+            if ((x==1) && (y==1)){
                 peca.imagem = @"DF_D_";
-            if ((x==1) && (y==2))
+                [peca setConnection:1 left:0 up:0 down:1];
+            }
+            if ((x==1) && (y==2)){
                 peca.imagem = @"DF_E_";
+                [peca setConnection:0 left:1 up:0 down:1];
+            }
             if ((x==1) && (y==3)){
                 peca.imagem = @"DF_VAZIO.gif";
                 peca.type = 0;
             }
-            
+            if ((x==2) && (y==3)){
+                peca.imagem = @"DF_F_";
+                [peca setConnection:0 left:1 up:1 down:0];
+            }
             peca = [peca initWithPosition:ccp(((35.0)*x)+94,((33.0)*y)+177)];
             
             peca.posX = x;
@@ -98,6 +113,38 @@
             
         }
     }
+}
+
+-(Peca*)getNextPieceConnection:(Peca*)piece outconnection:(NSString*)outconnection{
+    
+    //NSString *connectionOut =  [piece getOutConnection:outconnection];
+    NSString *connectionOut =  outconnection;
+    if (connectionOut == @"down"){
+        NSLog(@"DONW");
+        return [self getPieceByPosition:piece.posX y:piece.posY-1];
+    }else if(connectionOut == @"up"){
+        NSLog(@"UP");
+        return [self getPieceByPosition:piece.posX y:piece.posY+1];
+    }else if(connectionOut ==@"left"){
+        NSLog(@"LEFT");
+        return [self getPieceByPosition:piece.posX-1 y:piece.posY];
+    }else if (connectionOut ==@"right"){
+        NSLog(@"RIGHT");
+        return [self getPieceByPosition:piece.posX+1 y:piece.posY];
+    }
+    
+    return nil;
+}
+
+-(Peca*)getPieceByPosition:(int)x y:(int)y{
+    
+    for (Peca *peca in board){
+        
+        if ((peca.posX == x) && (peca.posY == y)){
+            return peca;
+        }
+    }
+    return nil;
 }
 
 -(Peca*)getNextPiecePosition:(int)x y:(int)y{
@@ -133,7 +180,27 @@
     return nil;
 }
 
+-(void)lightOffPieces{
+    for(Peca *piece in board){
+        [piece lightOff];
+    }
+    
+}
+
+-(Peca*)getFirstPiece{
+    int initialPointX = 1; 
+    int initialPointY = 2; 
+    
+    for(Peca *piece in board){
+        if ((piece.posY == initialPointY)&&(piece.posX==initialPointX)){
+            return piece;
+        }
+    }    
+    return nil;
+}
+
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+
     
     for(Peca *p in board){
 
@@ -151,6 +218,9 @@
                 Peca *emptyPiece = [self getNextPiecePosition:p.posX y:p.posY];
               
                 if (emptyPiece != nil){
+                    
+                    [self lightOffPieces];
+                    
                     CGPoint location = p.position;
                   
                     int posXTemp = [p posX];
@@ -166,22 +236,79 @@
                   
                     //PIECE LIGHT ON
                     
-                    int initialPointX = 1; 
-                    int initialPointY = 2; 
+                    //int initialPointX = 1; 
+                    //int initialPointY = 2; 
                     
-                    for(Peca *p in board){
+                    
+                    //for(Peca *p in board){
                         
-                        if ((p.posY == initialPointY)&&(p.posX==initialPointX)){
-                            [p lightOn];
-                        }else{
-                            [p lightOff];
-                        }
-                        
-                    }
+                    //    if ((p.posY == initialPointY)&&(p.posX==initialPointX)){
+                    //        [p lightOn:@"left"];
+                    //    }else{
+                    //        [p lightOff];
+                    //    }
+                    //}
+                    
+                    //NSString *connectionOut =  [[self getFirstPiece] getOutConnection:@"left"];
+                    //[self connectionsPath:[self getFirstPiece] entry:connectionOut];
+                    [self connectionsPath:[self getFirstPiece] entry:nil];
+                    
                 }
             }
         }
     }
+    
+    
+    
+    
+    
+}
+
+
+// recursive function por verify light path
+-(Peca*) connectionsPath:(Peca*) piece entry:(NSString*) entry{
+    
+    int initialPointX = 1; 
+    int initialPointY = 2; 
+    if (piece.type != 0){
+        if (entry == nil){
+            //Initial point
+        
+            if ((piece.posY == initialPointY)&&(piece.posX==initialPointX)){
+                if ([piece lightOn:@"left"]){ // try to light ON 
+                
+                    NSString *connectionOut =  [piece getOutConnection:@"left"]; //get other exit point 
+                    
+                    Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut]; // get next piece 
+                    
+                    [self connectionsPath:temp entry:connectionOut]; // verify temp piece 
+                }
+            }
+        
+        }else{
+            
+            // invert out to in point
+            if (entry == @"down"){
+                entry =  @"up";
+            }else if (entry ==@"up"){
+                entry =  @"down";
+            }else if (entry ==@"left"){
+                entry =  @"right";
+            }else if (entry ==@"right"){
+                entry = @"left";
+            }
+            
+            if ([piece lightOn:entry]){
+                
+                NSString *connectionOut =  [piece getOutConnection:entry]; 
+                Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut];
+                [self connectionsPath:temp entry:connectionOut];
+            
+            }
+        }
+    }
+    return nil;
+    
 }
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
@@ -190,9 +317,6 @@
 
 -(void)update:(ccTime)dt{
     //NSLog(@"update...");
-    
-    
-    //refresh path
     //vitory verify
 }
 

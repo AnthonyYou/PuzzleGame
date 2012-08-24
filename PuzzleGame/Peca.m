@@ -29,10 +29,14 @@
     return self;
 }
 
-- (void)lightOn{
+- (BOOL)lightOn:(NSString*)entry{
     if (self.type !=0){
-      [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@ON.gif",imagem]]];
+        if ([[connections objectForKey:entry] intValue] == 1){
+            [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@ON.gif",imagem]]];
+            return TRUE;
+        }
     }
+    return FALSE;
 }
 
 
@@ -41,5 +45,39 @@
       [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@OFF.gif",imagem]]];
     }
 }
+
+
+- (void)setConnection:(int) right left:(int)left up:(int)up down:(int)down{
+    
+    connections = [[NSMutableDictionary alloc] init];
+    
+    [connections setObject:[NSNumber numberWithInt:right] forKey:@"right"];
+    [connections setObject:[NSNumber numberWithInt:left] forKey:@"left"];
+    [connections setObject:[NSNumber numberWithInt:up] forKey:@"up"];
+    [connections setObject:[NSNumber numberWithInt:down] forKey:@"down"];
+    
+}
+- (NSMutableDictionary*) getConnections{
+    return connections;
+}
+
+-(NSString*)getOutConnection:(NSString*)entry{
+    
+    for (NSString *connection in connections){ 
+        
+        if (connection != entry){
+            
+            int number = [[connections objectForKey:connection] intValue];
+            
+            if (number ==1){
+                return connection;
+            }
+            
+        }
+    }
+    return nil;
+}
+
+
 
 @end
