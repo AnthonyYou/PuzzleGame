@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367515500.573895"
+         timestampString = "367529735.879613"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "277"
-         endingLineNumber = "277"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "-connectionsPath:entry:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,39 +51,39 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367526371.235451"
+         timestampString = "367529735.879613"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "302"
-         endingLineNumber = "302"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
          landmarkName = "-connectionsPath:entry:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367515500.573895"
+         timestampString = "367529735.879613"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "272"
-         endingLineNumber = "272"
+         startingLineNumber = "262"
+         endingLineNumber = "262"
          landmarkName = "-connectionsPath:entry:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367515500.573895"
+         timestampString = "367528962.04506"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
          landmarkName = "-getNextPieceConnection:outconnection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,12 +93,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Peca.m"
-         timestampString = "367524187.458928"
+         timestampString = "367527812.447948"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-lightOff"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGame/Game.m"
+         timestampString = "367529735.879613"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "293"
+         endingLineNumber = "293"
+         landmarkName = "-connectionsPath:entry:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGame/Game.m"
+         timestampString = "367529735.879613"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
+         landmarkName = "-vitoryVerify:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

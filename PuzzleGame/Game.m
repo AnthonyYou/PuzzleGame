@@ -27,14 +27,14 @@
         CGSize size = [[CCDirector sharedDirector] winSize];
  
         
-        //CCLabelTTF *label = [CCLabelTTF labelWithString:@"tabuleiro" fontName:@"Marker Felt" fontSize:14];
-        //label.position =  ccp( size.width /2 , size.height/2 );
-        //[self addChild: label];
-        
-        
         CCSprite *fundo = [CCSprite spriteWithFile:@"tabuleiro.gif" rect:CGRectMake(0, 0, size.width, size.height)];
         fundo.position = ccp( size.width/2, size.height/4 );
         [self addChild:fundo];
+ 
+        
+        totalMoves = [CCLabelTTF labelWithString:@"moves: " fontName:@"Marker Felt" fontSize:14];
+        totalMoves.position =  ccp( 60 , size.height -147 );
+        [self addChild: totalMoves];
         
         //ccTexParams tp = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
         //[fundo.texture setTexParameters:&tp];
@@ -52,14 +52,6 @@
 }
 
 -(void)montaTabuleiro:(CGSize) size{
-    
-    //peca = [[Peca alloc] initWithPosition:ccp(103.0,275.0)];
-    //CCSprite *peca = [CCSprite spriteWithFile:@"DF_A_OFF.gif"];
-    //peca.position = ccp( size.width/3, size.height/2 );
-    
-    
-    NSLog(@"width:%f-height:%f",size.width,size.height);
-    
     
     Peca *peca;
     board = [[NSMutableArray alloc] init];
@@ -117,7 +109,6 @@
 
 -(Peca*)getNextPieceConnection:(Peca*)piece outconnection:(NSString*)outconnection{
     
-    //NSString *connectionOut =  [piece getOutConnection:outconnection];
     NSString *connectionOut =  outconnection;
     if (connectionOut == @"down"){
         NSLog(@"DONW");
@@ -233,35 +224,32 @@
                     [emptyPiece setPosition:location];
                     [emptyPiece setPosX:posXTemp];
                     [emptyPiece setPosY:posYTemp];
-                  
-                    //PIECE LIGHT ON
+                    moves++;
+                    [totalMoves setString: [NSString stringWithFormat:@"moves: %i",moves]];
                     
-                    //int initialPointX = 1; 
-                    //int initialPointY = 2; 
-                    
-                    
-                    //for(Peca *p in board){
-                        
-                    //    if ((p.posY == initialPointY)&&(p.posX==initialPointX)){
-                    //        [p lightOn:@"left"];
-                    //    }else{
-                    //        [p lightOff];
-                    //    }
-                    //}
-                    
-                    //NSString *connectionOut =  [[self getFirstPiece] getOutConnection:@"left"];
-                    //[self connectionsPath:[self getFirstPiece] entry:connectionOut];
+                    //PATH PIECE LIGHT ON
                     [self connectionsPath:[self getFirstPiece] entry:nil];
                     
                 }
             }
         }
     }
+}
+
+-(BOOL) vitoryVerify:(Peca*)piece{
+    int finalPointX = 3; 
+    int finalPointY = 1; 
     
+    int pox = [piece posX];
+    int poy = [piece posY];
+    NSLog(@"-->%i-%i",pox,poy);
     
-    
-    
-    
+    if ((pox == finalPointX) && (poy == finalPointY)){
+        NSLog(@"%@", @"######### [ VITORY ] #########");
+        return YES;
+    }
+
+    return NO;
 }
 
 
@@ -300,10 +288,13 @@
             
             if ([piece lightOn:entry]){
                 
-                NSString *connectionOut =  [piece getOutConnection:entry]; 
-                Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut];
-                [self connectionsPath:temp entry:connectionOut];
-            
+                if ([self vitoryVerify:piece]){
+                    [[CCDirector sharedDirector] pushScene:[HelloWorldLayer scene]];
+                }else{
+                    NSString *connectionOut =  [piece getOutConnection:entry]; 
+                    Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut];
+                    [self connectionsPath:temp entry:connectionOut];
+                }
             }
         }
     }

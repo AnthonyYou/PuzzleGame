@@ -7,10 +7,12 @@
 
 #import "cocos2d.h"
 #import "Peca.h"
+#import "HelloWorldLayer.h"
 
 @interface Game : CCLayer {
-    //Peca *peca;
     NSMutableArray *board;
+    CCLabelTTF *totalMoves;
+    int moves;
 }
 +(CCScene *) scene;
 -(void)montaTabuleiro:(CGSize) size;
@@ -21,4 +23,5 @@
 -(Peca*)getPieceByPosition:(int)x y:(int)y;
 -(Peca*)getFirstPiece;
 -(void)lightOffPieces;
+-(BOOL) vitoryVerify:(Peca*)piece;
 @end
