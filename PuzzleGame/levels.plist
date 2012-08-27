@@ -2,23 +2,64 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>level1</key>
+	<key>levels</key>
 	<dict>
-		<key>board</key>
+		<key>level1</key>
 		<dict>
-			<key>1</key>
-			<string>535</string>
-			<key>2</key>
-			<string>151</string>
-			<key>3</key>
-			<string>042</string>
+			<key>board</key>
+			<dict>
+				<key>1</key>
+				<string>5-3-2</string>
+				<key>2</key>
+				<string>1-5-1</string>
+				<key>3</key>
+				<string>0-4-2</string>
+			</dict>
+			<key>initial</key>
+			<dict>
+				<key>x</key>
+				<string>1</string>
+				<key>y</key>
+				<string>2</string>
+			</dict>
 		</dict>
-		<key>initial</key>
+		<key>level2</key>
 		<dict>
-			<key>y</key>
-			<string>2</string>
-			<key>x</key>
-			<string>1</string>
+			<key>board</key>
+			<dict>
+				<key>1</key>
+				<string>5-3-2</string>
+				<key>2</key>
+				<string>1-5-1</string>
+				<key>3</key>
+				<string>0-4-2</string>
+			</dict>
+			<key>initial</key>
+			<dict>
+				<key>x</key>
+				<string>1</string>
+				<key>y</key>
+				<string>2</string>
+			</dict>
+		</dict>
+		<key>level3</key>
+		<dict>
+			<key>board</key>
+			<dict>
+				<key>1</key>
+				<string>5-3-2</string>
+				<key>2</key>
+				<string>1-5-1</string>
+				<key>3</key>
+				<string>0-4-2</string>
+			</dict>
+			<key>initial</key>
+			<dict>
+				<key>x</key>
+				<string>1</string>
+				<key>y</key>
+				<string>2</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

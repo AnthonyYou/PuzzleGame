@@ -50,7 +50,7 @@
         
         [self setIsTouchEnabled:YES];
         
-        [self montaTabuleiro:size];
+        [self createBoard:size stage:@"level2"];
         
         [self connectionsPath:[self getFirstPiece] entry:nil];
         
@@ -60,60 +60,90 @@
     return self;
 }
 
--(void)montaTabuleiro:(CGSize) size{
+-(void)createBoard:(CGSize) size stage:(NSString*)stage{
     
     Peca *peca;
     board = [[NSMutableArray alloc] init];
     
-    for (int x=1; x<4; x++) {
-        for (int y=1; y<4; y++) {
-                
+    NSData *plistData;
+    NSString *error;
+    NSPropertyListFormat format;
+    id plist;
+    
+    NSString *localizedPath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
+    
+    plistData = [NSData dataWithContentsOfFile:localizedPath];
+    
+    plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
+    
+    NSDictionary *levels = plist;
+    
+    levels = [levels objectForKey:@"levels"];
+    
+    NSDictionary *level = [levels objectForKey:stage];
+    
+    NSMutableDictionary *boardconfig = [level objectForKey:@"board"];
+    
+    NSMutableDictionary *initial = [level objectForKey:@"initial"];
+    
+    initialPointX = [[initial objectForKey:@"x"] intValue];
+    initialPointY = [[initial objectForKey:@"y"] intValue];
+    
+    for (int x=1;x<=3;x++){
+        NSString *positions = [NSString stringWithFormat:@"%i",x];
+
+        positions = [boardconfig objectForKey:positions];
+        
+        NSArray *arrayPositions = [positions componentsSeparatedByString:@"-"];
+        int y=0;
+        
+        for (NSString *pieceType in arrayPositions){
+            y++;
+            
             peca = [Peca alloc];
+            peca.type = [pieceType intValue] ;
             
+            switch (peca.type) {
+                case 0:
+                    peca.imagem = @"DF_VAZIO.gif";
+                    break;
+                case 1:
+                    peca.imagem = @"DF_A_";
+                    [peca setConnection:0 left:0 up:1 down:1];
+                    break;
+                case 2:
+                    peca.imagem = @"DF_B_";
+                    [peca setConnection:1 left:1 up:0 down:0];
+                    break;
+                case 3:
+                    peca.imagem = @"DF_C_";
+                    [peca setConnection:1 left:0 up:1 down:0];
+                    break;
+                case 4:
+                    peca.imagem = @"DF_D_";
+                    [peca setConnection:1 left:0 up:0 down:1];
+                    break;
+                case 5:
+                    peca.imagem = @"DF_E_";
+                    [peca setConnection:0 left:1 up:0 down:1];
+                    break;
+                case 6:
+                    peca.imagem = @"DF_F_";
+                    [peca setConnection:0 left:1 up:1 down:0];
+                default:
+                    break;
+            }
             
-            peca.type = 1;
+            peca = [peca initWithPosition:ccp(((35.0)*y)+94,((33.0)*x)+177)];
             
-            //temporary fixed boad pieces
-            if ((x==2) && (y==2)){
-                peca.imagem = @"DF_A_";
-                [peca setConnection:0 left:0 up:1 down:1];
-            }
-            if ((x==2) && (y==1)){
-                peca.imagem = @"DF_C_";
-                [peca setConnection:1 left:0 up:1 down:0];
-            }
-            if (x==3){
-                peca.imagem = @"DF_B_";
-                [peca setConnection:1 left:1 up:0 down:0];
-            }
-            if ((x==1) && (y==1)){
-                peca.imagem = @"DF_D_";
-                [peca setConnection:1 left:0 up:0 down:1];
-            }
-            if ((x==1) && (y==2)){
-                peca.imagem = @"DF_E_";
-                [peca setConnection:0 left:1 up:0 down:1];
-            }
-            if ((x==1) && (y==3)){
-                peca.imagem = @"DF_VAZIO.gif";
-                peca.type = 0;
-            }
-            if ((x==2) && (y==3)){
-                peca.imagem = @"DF_F_";
-                [peca setConnection:0 left:1 up:1 down:0];
-            }
-            peca = [peca initWithPosition:ccp(((35.0)*x)+94,((33.0)*y)+177)];
-            
-            peca.posX = x;
-            peca.posY = y;
+            peca.posX = y;
+            peca.posY = x;
             
             [board addObject:peca];
             
             [self addChild:peca];
-            NSLog(@"#%i%i",x,y);
-            
         }
-    }
+    }    
 }
 
 -(Peca*)getNextPieceConnection:(Peca*)piece outconnection:(NSString*)outconnection{
@@ -188,8 +218,6 @@
 }
 
 -(Peca*)getFirstPiece{
-    int initialPointX = 1; 
-    int initialPointY = 2; 
     
     for(Peca *piece in board){
         if ((piece.posY == initialPointY)&&(piece.posX==initialPointX)){
@@ -245,13 +273,16 @@
     }
 }
 
--(BOOL) vitoryVerify:(Peca*)piece{
+-(BOOL) vitoryVerify:(Peca*)piece entry:(NSString*) entry{
     int finalPointX = 3; 
     int finalPointY = 1; 
     
     if (([piece posX] == finalPointX) && ([piece posY] == finalPointY)){
-        NSLog(@"%@", @"######### [ VITORY ] #########");
-        return YES;
+        
+        if ([self getNextPieceConnection:piece outconnection:entry]){
+            NSLog(@"%@", @"######### [ VITORY ] #########");
+            return YES;
+        }
     }
 
     return NO;
@@ -260,9 +291,6 @@
 
 // recursive function por verify light path
 -(Peca*) connectionsPath:(Peca*) piece entry:(NSString*) entry{
-    
-    int initialPointX = 1; 
-    int initialPointY = 2; 
     if (piece.type != 0){
         if (entry == nil){
             //Initial point
@@ -293,7 +321,7 @@
             
             if ([piece lightOn:entry]){
                 
-                if ([self vitoryVerify:piece]){
+                if ([self vitoryVerify:piece entry:entry]){
                     
                     
                     NSLog(@"moves:%i",moves);

@@ -14,9 +14,11 @@
     NSMutableArray *board;
     CCLabelTTF *totalMoves;
     int moves;
+    int initialPointX; 
+    int initialPointY; 
 }
 +(CCScene *) scene;
--(void)montaTabuleiro:(CGSize) size;
+-(void)createBoard:(CGSize) size stage:(NSString*)stage;
 -(Peca*)getEmptyPiece;
 -(Peca*)getNextPiecePosition:(int)x y:(int)y;
 -(Peca*)connectionsPath:(Peca*) piece entry:(NSString*) entry;
@@ -24,5 +26,5 @@
 -(Peca*)getPieceByPosition:(int)x y:(int)y;
 -(Peca*)getFirstPiece;
 -(void)lightOffPieces;
--(BOOL)vitoryVerify:(Peca*)piece;
+-(BOOL)vitoryVerify:(Peca*)piece entry:(NSString*) entry;
 @end

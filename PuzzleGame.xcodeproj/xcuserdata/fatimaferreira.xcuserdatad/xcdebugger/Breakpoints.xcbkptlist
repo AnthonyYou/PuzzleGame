@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367536383.254718"
+         timestampString = "367791541.75693"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "271"
-         endingLineNumber = "271"
+         startingLineNumber = "264"
+         endingLineNumber = "264"
          landmarkName = "-connectionsPath:entry:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367536383.254718"
+         timestampString = "367791541.75693"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "294"
-         endingLineNumber = "294"
+         startingLineNumber = "290"
+         endingLineNumber = "290"
          landmarkName = "-connectionsPath:entry:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,26 +65,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367536383.254718"
+         timestampString = "367791541.75693"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "260"
+         endingLineNumber = "260"
          landmarkName = "-connectionsPath:entry:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "PuzzleGame/Game.m"
-         timestampString = "367530563.425401"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
-         landmarkName = "-getNextPieceConnection:outconnection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -107,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367539023.138336"
+         timestampString = "367791541.75693"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "303"
-         endingLineNumber = "303"
+         startingLineNumber = "296"
+         endingLineNumber = "296"
          landmarkName = "-connectionsPath:entry:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,12 +107,68 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "PuzzleGame/Game.m"
-         timestampString = "367536383.254718"
+         timestampString = "367791541.75693"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "254"
-         endingLineNumber = "254"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-vitoryVerify:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGame/Game.m"
+         timestampString = "367791541.75693"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "139"
+         endingLineNumber = "139"
+         landmarkName = "-montaTabuleiro:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGame/Game.m"
+         timestampString = "367791541.75693"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
+         landmarkName = "-montaTabuleiro:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGame/Game.m"
+         timestampString = "367791541.75693"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
+         landmarkName = "-montaTabuleiro:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGame/Game.m"
+         timestampString = "367791541.75693"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "-montaTabuleiro:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
