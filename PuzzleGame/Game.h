@@ -16,8 +16,16 @@
     int moves;
     int initialPointX; 
     int initialPointY; 
+    int level;
 }
 +(CCScene *) scene;
++(CCScene *) sceneWithParam:(id)parameter;
+-(id) initWithData:(int) level;
++(id) nodeWithData:(int) level;
+
+-(void)createLevel:(int) level;
++(void) setLevel:(NSString*)level;
++(NSString*) getLevel;
 -(void)createBoard:(CGSize) size stage:(NSString*)stage;
 -(Peca*)getEmptyPiece;
 -(Peca*)getNextPiecePosition:(int)x y:(int)y;

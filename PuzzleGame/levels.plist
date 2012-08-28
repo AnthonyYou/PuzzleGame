@@ -28,11 +28,11 @@
 			<key>board</key>
 			<dict>
 				<key>1</key>
-				<string>5-3-2</string>
+				<string>5-1-2</string>
 				<key>2</key>
-				<string>1-5-1</string>
+				<string>1-0-1</string>
 				<key>3</key>
-				<string>0-4-2</string>
+				<string>2-4-3</string>
 			</dict>
 			<key>initial</key>
 			<dict>

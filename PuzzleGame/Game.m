@@ -20,44 +20,79 @@
 	return scene;
 }
 
--(id) init
++(CCScene *)sceneWithParam:(id)parameter
 {
+    
+    CCScene * scene = [CCScene node];
+    
+    Game *layer = [Game node];
+    
+    [scene addChild: layer];
+    return scene;
+}
+
+-(id) initWithData:(int) level{
     if( (self=[super init])) {
-        
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        
-        CCSprite *fundo = [CCSprite spriteWithFile:@"tabuleiro.gif" rect:CGRectMake(0, 0, size.width, size.height)];
-        fundo.position = ccp( size.width/2, size.height/4 );
-        [self addChild:fundo];
-
-        
-        CCMenuItemImage *giveup = [CCMenuItemImage itemFromNormalImage:@"botaoDesistir.gif" selectedImage:@"botaoDesistir.gif" target:self selector:@selector(backMenu:)];
-        
-        CCMenu *menu = [CCMenu menuWithItems:giveup, nil];
-        
-        menu.position = ccp( 69 , (size.height/3)-50  );
-        
-        //[menu alignItemsVertically];
-        [self addChild: menu];
-
-        
-        totalMoves = [CCLabelTTF labelWithString:@"moves: 0" fontName:@"Marker Felt" fontSize:14];
-        totalMoves.position =  ccp( 60 , size.height -147 );
-        [self addChild: totalMoves];
-        
-        //ccTexParams tp = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
-        //[fundo.texture setTexParameters:&tp];
-        
-        [self setIsTouchEnabled:YES];
-        
-        [self createBoard:size stage:@"level2"];
-        
-        [self connectionsPath:[self getFirstPiece] entry:nil];
-        
-        [self schedule:@selector(update:)];
+        [self createLevel:level];
         
     }
     return self;
+}
++(id) nodeWithData:(int) level{
+    return [[[self alloc] initWithData:level] autorelease];
+}
+
+-(id) init
+{
+    if( (self=[super init])) {
+        [self createLevel:1];
+        
+    }
+    return self;
+}
+
+-(void)createLevel:(int) levelstage{
+    
+    level = levelstage;
+    
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    CCSprite *fundo = [CCSprite spriteWithFile:@"tabuleiro.gif" rect:CGRectMake(0, 0, size.width, size.height)];
+    fundo.position = ccp( size.width/2, size.height/4 );
+    [self addChild:fundo];
+    
+    
+    CCMenuItemImage *giveup = [CCMenuItemImage itemFromNormalImage:@"botaoDesistir.gif" selectedImage:@"botaoDesistir.gif" target:self selector:@selector(backMenu:)];
+    
+    CCMenu *menu = [CCMenu menuWithItems:giveup, nil];
+    
+    menu.position = ccp( 69 , (size.height/3)-50  );
+    
+    //[menu alignItemsVertically];
+    [self addChild: menu];
+    
+    
+    CCLabelTTF *labellevel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"level%i",level] fontName:@"Marker Felt" fontSize:14];
+    labellevel.position =  ccp( 60 , size.height -47 );
+    [self addChild: labellevel];
+    
+    
+    
+    totalMoves = [CCLabelTTF labelWithString:@"moves: 0" fontName:@"Marker Felt" fontSize:14];
+    totalMoves.position =  ccp( 60 , size.height -147 );
+    [self addChild: totalMoves];
+    
+    //ccTexParams tp = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+    //[fundo.texture setTexParameters:&tp];
+    
+    [self setIsTouchEnabled:YES];
+    
+    [self createBoard:size stage: [NSString stringWithFormat:@"level%i",level]];
+    
+    [self connectionsPath:[self getFirstPiece] entry:nil];
+    
+    [self schedule:@selector(update:)];
+    
 }
 
 -(void)createBoard:(CGSize) size stage:(NSString*)stage{
@@ -80,11 +115,11 @@
     
     levels = [levels objectForKey:@"levels"];
     
-    NSDictionary *level = [levels objectForKey:stage];
+    NSDictionary *levelconfig = [levels objectForKey:stage];
     
-    NSMutableDictionary *boardconfig = [level objectForKey:@"board"];
+    NSMutableDictionary *boardconfig = [levelconfig objectForKey:@"board"];
     
-    NSMutableDictionary *initial = [level objectForKey:@"initial"];
+    NSMutableDictionary *initial = [levelconfig objectForKey:@"initial"];
     
     initialPointX = [[initial objectForKey:@"x"] intValue];
     initialPointY = [[initial objectForKey:@"y"] intValue];
@@ -323,9 +358,9 @@
                 
                 if ([self vitoryVerify:piece entry:entry]){
                     
-                    
                     NSLog(@"moves:%i",moves);
-                    Vitory *vitory = [Vitory nodeWithGameMoves:moves];
+                    level++;
+                    Vitory *vitory = [Vitory nodeWithGameMoves:moves next:level];
                     
                     [[CCDirector sharedDirector] pushScene:vitory];
                 }else{

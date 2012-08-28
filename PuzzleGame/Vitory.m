@@ -11,13 +11,15 @@
 @implementation Vitory
 
 
-+(id)nodeWithGameMoves:(int)moves{
++(id)nodeWithGameMoves:(int)moves next:(int)next{
     
-    return [[[self alloc] initWithGameMoves:moves]autorelease];
+    return [[[self alloc] initWithGameMoves:moves next:next]autorelease];
 }
 
--(id) initWithGameMoves:(int)moves
+-(id) initWithGameMoves:(int)moves next:(int)next
 {
+    nextlevel = next;
+    
 	if( (self=[super init])) {
         
         CGSize size = [[CCDirector sharedDirector] winSize];
@@ -46,7 +48,10 @@
 }
 
 -(void) nextLevel: (CCMenuItem *) menuItem{
-    [[CCDirector sharedDirector] pushScene:[Menu scene]];
+    
+    
+    [[CCDirector sharedDirector] replaceScene:[Game nodeWithData:nextlevel]];
+    
 }
 
 

@@ -45,8 +45,9 @@
 
 -(void) startGame: (CCMenuItem *) menuItem{
     NSLog(@"start game");
-    
-    [[CCDirector sharedDirector] pushScene:[Game scene]];
+
+    [[CCDirector sharedDirector] pushScene:[Game sceneWithParam:@"teste"]];
+   // [[CCDirector sharedDirector] pushScene:[Game scene]];
 }
 
 -(void) exitGame: (CCMenuItem *) menuItem{
