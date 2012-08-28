@@ -314,9 +314,9 @@
     
     if (([piece posX] == finalPointX) && ([piece posY] == finalPointY)){
         
-        if ([self getNextPieceConnection:piece outconnection:entry]){
+        if ([piece getOutConnection:entry] == @"right"){
             NSLog(@"%@", @"######### [ VITORY ] #########");
-            return YES;
+            return YES;            
         }
     }
 
