@@ -31,15 +31,14 @@
     return scene;
 }
 
--(id) initWithData:(int) level{
+-(id) initWithData:(int) stagelevel{
     if( (self=[super init])) {
-        [self createLevel:level];
-        
+        [self createLevel:stagelevel];
     }
     return self;
 }
-+(id) nodeWithData:(int) level{
-    return [[[self alloc] initWithData:level] autorelease];
++(id) nodeWithData:(int) stagelevel{
+    return [[[self alloc] initWithData:stagelevel] autorelease];
 }
 
 -(id) init
@@ -91,13 +90,13 @@
     
     [self connectionsPath:[self getFirstPiece] entry:nil];
     
-    [self schedule:@selector(update:)];
+    //[self schedule:@selector(update:)];
     
 }
 
 -(void)createBoard:(CGSize) size stage:(NSString*)stage{
     
-    Peca *peca;
+    Piece *peca;
     board = [[NSMutableArray alloc] init];
     
     NSData *plistData;
@@ -135,7 +134,7 @@
         for (NSString *pieceType in arrayPositions){
             y++;
             
-            peca = [Peca alloc];
+            peca = [Piece alloc];
             peca.type = [pieceType intValue] ;
             
             switch (peca.type) {
@@ -181,7 +180,7 @@
     }    
 }
 
--(Peca*)getNextPieceConnection:(Peca*)piece outconnection:(NSString*)outconnection{
+-(Piece*)getNextPieceConnection:(Piece*)piece outconnection:(NSString*)outconnection{
     
     NSString *connectionOut =  outconnection;
     if (connectionOut == @"down"){
@@ -201,9 +200,9 @@
     return nil;
 }
 
--(Peca*)getPieceByPosition:(int)x y:(int)y{
+-(Piece*)getPieceByPosition:(int)x y:(int)y{
     
-    for (Peca *peca in board){
+    for (Piece *peca in board){
         
         if ((peca.posX == x) && (peca.posY == y)){
             return peca;
@@ -212,9 +211,9 @@
     return nil;
 }
 
--(Peca*)getNextPiecePosition:(int)x y:(int)y{
+-(Piece*)getNextPiecePosition:(int)x y:(int)y{
     
-    Peca *emptyPiece = [self getEmptyPiece];
+    Piece *emptyPiece = [self getEmptyPiece];
     if (x == [emptyPiece posX]){
         if (y+1 == [emptyPiece posY]){
             return emptyPiece;
@@ -232,10 +231,10 @@
     return nil;
 }
 
--(Peca*)getEmptyPiece{
+-(Piece*)getEmptyPiece{
     
     
-    for(Peca *p in board){
+    for(Piece *p in board){
         
         if ([p type] == 0){
             return p;
@@ -246,15 +245,15 @@
 }
 
 -(void)lightOffPieces{
-    for(Peca *piece in board){
+    for(Piece *piece in board){
         [piece lightOff];
     }
     
 }
 
--(Peca*)getFirstPiece{
+-(Piece*)getFirstPiece{
     
-    for(Peca *piece in board){
+    for(Piece *piece in board){
         if ((piece.posY == initialPointY)&&(piece.posX==initialPointX)){
             return piece;
         }
@@ -265,7 +264,7 @@
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 
     
-    for(Peca *p in board){
+    for(Piece *p in board){
 
         UITouch *pieceTouch = [touches anyObject];
     
@@ -278,7 +277,7 @@
             if (p.type != 0){
                 NSLog(@"[TOUCHED PIECE] x:%i y:%i", p.posX, p.posY);  
             
-                Peca *emptyPiece = [self getNextPiecePosition:p.posX y:p.posY];
+                Piece *emptyPiece = [self getNextPiecePosition:p.posX y:p.posY];
               
                 if (emptyPiece != nil){
                     
@@ -308,7 +307,7 @@
     }
 }
 
--(BOOL) vitoryVerify:(Peca*)piece entry:(NSString*) entry{
+-(BOOL) vitoryVerify:(Piece*)piece entry:(NSString*) entry{
     int finalPointX = 3; 
     int finalPointY = 1; 
     
@@ -325,7 +324,7 @@
 
 
 // recursive function por verify light path
--(Peca*) connectionsPath:(Peca*) piece entry:(NSString*) entry{
+-(Piece*) connectionsPath:(Piece*) piece entry:(NSString*) entry{
     if (piece.type != 0){
         if (entry == nil){
             //Initial point
@@ -335,9 +334,9 @@
                 
                     NSString *connectionOut =  [piece getOutConnection:@"left"]; //get other exit point 
                     
-                    Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut]; // get next piece 
+                    Piece *piecetemp = [self getNextPieceConnection:piece outconnection:connectionOut]; // get next piece 
                     
-                    [self connectionsPath:temp entry:connectionOut]; // verify temp piece 
+                    [self connectionsPath:piecetemp entry:connectionOut]; // verify temp piece 
                 }
             }
         
@@ -365,8 +364,8 @@
                     [[CCDirector sharedDirector] pushScene:vitory];
                 }else{
                     NSString *connectionOut =  [piece getOutConnection:entry]; 
-                    Peca *temp = [self getNextPieceConnection:piece outconnection:connectionOut];
-                    [self connectionsPath:temp entry:connectionOut];
+                    Piece *piecetemp = [self getNextPieceConnection:piece outconnection:connectionOut];
+                    [self connectionsPath:piecetemp entry:connectionOut];
                 }
             }
         }

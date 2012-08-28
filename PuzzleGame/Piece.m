@@ -5,10 +5,10 @@
 //  Created by Roberto Capelo on 21/08/12.
 //
 
-#import "Peca.h"
+#import "Piece.h"
 
 
-@implementation Peca
+@implementation Piece
 
 @synthesize type,posX,posY,imagem;
 

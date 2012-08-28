@@ -6,7 +6,7 @@
 //
 
 #import "cocos2d.h"
-#import "Peca.h"
+#import "Piece.h"
 #import "Vitory.h"
 #import "Menu.h"
 
@@ -20,19 +20,17 @@
 }
 +(CCScene *) scene;
 +(CCScene *) sceneWithParam:(id)parameter;
--(id) initWithData:(int) level;
-+(id) nodeWithData:(int) level;
+-(id) initWithData:(int) stagelevel;
++(id) nodeWithData:(int) stagelevel;
 
 -(void)createLevel:(int) level;
-+(void) setLevel:(NSString*)level;
-+(NSString*) getLevel;
 -(void)createBoard:(CGSize) size stage:(NSString*)stage;
--(Peca*)getEmptyPiece;
--(Peca*)getNextPiecePosition:(int)x y:(int)y;
--(Peca*)connectionsPath:(Peca*) piece entry:(NSString*) entry;
--(Peca*)getNextPieceConnection:(Peca*)piece outconnection:(NSString*)outconnection;
--(Peca*)getPieceByPosition:(int)x y:(int)y;
--(Peca*)getFirstPiece;
+-(Piece*)getEmptyPiece;
+-(Piece*)getNextPiecePosition:(int)x y:(int)y;
+-(Piece*)connectionsPath:(Piece*) piece entry:(NSString*) entry;
+-(Piece*)getNextPieceConnection:(Piece*)piece outconnection:(NSString*)outconnection;
+-(Piece*)getPieceByPosition:(int)x y:(int)y;
+-(Piece*)getFirstPiece;
 -(void)lightOffPieces;
--(BOOL)vitoryVerify:(Peca*)piece entry:(NSString*) entry;
+-(BOOL)vitoryVerify:(Piece*)piece entry:(NSString*) entry;
 @end

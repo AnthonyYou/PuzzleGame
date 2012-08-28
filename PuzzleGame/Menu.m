@@ -52,7 +52,9 @@
 
 -(void) exitGame: (CCMenuItem *) menuItem{
     NSLog(@"vitory screen");
-    [[CCDirector sharedDirector] pushScene:[Menu scene]];
+    exit(0);
+    
+    //[[CCDirector sharedDirector] pushScene:[Menu scene]];
 }
 
 

@@ -8,7 +8,7 @@
 #import "cocos2d.h"
 
 
-@interface Peca : CCSprite {
+@interface Piece : CCSprite {
     NSMutableDictionary *connections;
 }
 
