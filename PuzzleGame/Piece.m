@@ -10,7 +10,7 @@
 
 @implementation Piece
 
-@synthesize type,posX,posY,imagem;
+@synthesize type,posX,posY,imagem, light;
 
 - (id)initWithPosition:(CGPoint) pos{
     
@@ -33,6 +33,7 @@
     if (self.type !=0){
         if ([[connections objectForKey:entry] intValue] == 1){
             [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@ON.gif",imagem]]];
+            [self setLight:TRUE];
             return TRUE;
         }
     }
@@ -42,7 +43,8 @@
 
 - (void)lightOff{
     if (self.type != 0){
-      [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@OFF.gif",imagem]]];
+        [self setLight:FALSE];  
+        [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@OFF.gif",imagem]]];
     }
 }
 

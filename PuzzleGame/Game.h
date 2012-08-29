@@ -22,7 +22,6 @@
 +(CCScene *) sceneWithParam:(id)parameter;
 -(id) initWithData:(int) stagelevel;
 +(id) nodeWithData:(int) stagelevel;
-
 -(void)createLevel:(int) level;
 -(void)createBoard:(CGSize) size stage:(NSString*)stage;
 -(Piece*)getEmptyPiece;

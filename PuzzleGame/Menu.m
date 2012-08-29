@@ -8,6 +8,7 @@
 #import "Menu.h"
 #import "Vitory.h"
 #import "Game.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Menu
 
@@ -37,6 +38,12 @@
         [menu alignItemsVertically];
         
         [self addChild: menu];
+        
+        
+        
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.mp3"];
+        
         
     }
     return self;

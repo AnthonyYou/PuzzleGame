@@ -164,12 +164,16 @@
 		DA862F1E15E4142B00C31772 /* tabuleiromenu.GIF in Resources */ = {isa = PBXBuildFile; fileRef = DA862EF815E4142B00C31772 /* tabuleiromenu.GIF */; };
 		DA862F1F15E4142B00C31772 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = DA862EF915E4142B00C31772 /* Thumbs.db */; };
 		DA862F2215E414A800C31772 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = DA862F2115E414A800C31772 /* Menu.m */; };
+		DAA30CBB15EE59DB00640D77 /* click.caf in Resources */ = {isa = PBXBuildFile; fileRef = DAA30CB915EE59DB00640D77 /* click.caf */; };
+		DAA30CBC15EE59DB00640D77 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAA30CBA15EE59DB00640D77 /* intro.mp3 */; };
+		DAA30CBF15EE5CA200640D77 /* collectStar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAA30CBE15EE5CA200640D77 /* collectStar.mp3 */; };
+		DAA30CC115EE5D8300640D77 /* levelCompleted.caf in Resources */ = {isa = PBXBuildFile; fileRef = DAA30CC015EE5D8300640D77 /* levelCompleted.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA4F273215E438E800B9C3D6 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		DA4F273315E438E800B9C3D6 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		DA4F273615E4415300B9C3D6 /* Piece.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Piece.h; sourceTree = "<group>"; };
+		DA4F273615E4415300B9C3D6 /* Piece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Piece.h; sourceTree = "<group>"; };
 		DA4F273715E4415400B9C3D6 /* Piece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Piece.m; sourceTree = "<group>"; };
 		DA567F4F15E8381F00DBC7D0 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
 		DA862D5E15E3C14500C31772 /* PuzzleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -447,6 +451,10 @@
 		DA862EF915E4142B00C31772 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		DA862F2015E414A800C31772 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		DA862F2115E414A800C31772 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		DAA30CB915EE59DB00640D77 /* click.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = click.caf; sourceTree = "<group>"; };
+		DAA30CBA15EE59DB00640D77 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
+		DAA30CBE15EE5CA200640D77 /* collectStar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collectStar.mp3; sourceTree = "<group>"; };
+		DAA30CC015EE5D8300640D77 /* levelCompleted.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = levelCompleted.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +524,7 @@
 				DA862EC715E3C14800C31772 /* RootViewController.h */,
 				DA862EC815E3C14800C31772 /* RootViewController.m */,
 				DA862ECD15E3C14800C31772 /* GameConfig.h */,
+				DAA30CB815EE59DB00640D77 /* Audio */,
 				DA862D7315E3C14500C31772 /* Resources */,
 				DA862D8715E3C14600C31772 /* libs */,
 				DA862EC015E3C14800C31772 /* Supporting Files */,
@@ -899,6 +908,17 @@
 			path = Resources/img;
 			sourceTree = "<group>";
 		};
+		DAA30CB815EE59DB00640D77 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				DAA30CC015EE5D8300640D77 /* levelCompleted.caf */,
+				DAA30CBE15EE5CA200640D77 /* collectStar.mp3 */,
+				DAA30CB915EE59DB00640D77 /* click.caf */,
+				DAA30CBA15EE59DB00640D77 /* intro.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -997,6 +1017,10 @@
 				DA862F1E15E4142B00C31772 /* tabuleiromenu.GIF in Resources */,
 				DA862F1F15E4142B00C31772 /* Thumbs.db in Resources */,
 				DA567F5015E8382300DBC7D0 /* levels.plist in Resources */,
+				DAA30CBB15EE59DB00640D77 /* click.caf in Resources */,
+				DAA30CBC15EE59DB00640D77 /* intro.mp3 in Resources */,
+				DAA30CBF15EE5CA200640D77 /* collectStar.mp3 in Resources */,
+				DAA30CC115EE5D8300640D77 /* levelCompleted.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

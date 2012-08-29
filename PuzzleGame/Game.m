@@ -6,7 +6,7 @@
 //
 
 #import "Game.h"
-
+#import "SimpleAudioEngine.h"
 
 @implementation Game
 +(CCScene *) scene
@@ -33,6 +33,9 @@
 
 -(id) initWithData:(int) stagelevel{
     if( (self=[super init])) {
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"click.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"collectStar.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"levelCompleted.caf"];
         [self createLevel:stagelevel];
     }
     return self;
@@ -45,7 +48,6 @@
 {
     if( (self=[super init])) {
         [self createLevel:1];
-        
     }
     return self;
 }
@@ -139,7 +141,7 @@
             
             switch (peca.type) {
                 case 0:
-                    peca.imagem = @"DF_VAZIO.gif";
+                    peca.imagem = @"DF_VAZIO.GIF";
                     break;
                 case 1:
                     peca.imagem = @"DF_A_";
@@ -281,6 +283,8 @@
               
                 if (emptyPiece != nil){
                     
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"click.caf"];
+                    
                     [self lightOffPieces];
                     
                     CGPoint location = p.position;
@@ -301,6 +305,10 @@
                     //PATH PIECE LIGHT ON
                     [self connectionsPath:[self getFirstPiece] entry:nil];
                     
+                    if ([p light] ==TRUE){
+                        [[SimpleAudioEngine sharedEngine] playEffect:@"collectStar.mp3"];
+                    }
+                    
                 }
             }
         }
@@ -314,7 +322,10 @@
     if (([piece posX] == finalPointX) && ([piece posY] == finalPointY)){
         
         if ([piece getOutConnection:entry] == @"right"){
+            
+            
             NSLog(@"%@", @"######### [ VITORY ] #########");
+            [[SimpleAudioEngine sharedEngine] playEffect:@"levelCompleted.caf"];
             return YES;            
         }
     }
@@ -331,7 +342,7 @@
         
             if ((piece.posY == initialPointY)&&(piece.posX==initialPointX)){
                 if ([piece lightOn:@"left"]){ // try to light ON 
-                
+                    
                     NSString *connectionOut =  [piece getOutConnection:@"left"]; //get other exit point 
                     
                     Piece *piecetemp = [self getNextPieceConnection:piece outconnection:connectionOut]; // get next piece 
