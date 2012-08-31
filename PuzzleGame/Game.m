@@ -129,6 +129,14 @@
     initialpiece.position = ccp( (40.0),((52.0)*initialPointY)+140);
     [self addChild:initialpiece];
     
+    NSMutableDictionary *final = [levelconfig objectForKey:@"final"];
+    
+    finalPointX = [[final objectForKey:@"x"] intValue];
+    finalPointY = [[final objectForKey:@"y"] intValue];
+    
+    CCSprite *finalpiece = [CCSprite spriteWithFile:@"DF_B_ON.png"];
+    finalpiece.position = ccp( ((60.0)*(finalPointX+1))+34,((52.0))+140);
+    [self addChild:finalpiece];
     
     
     for (int x=1;x<=3;x++){

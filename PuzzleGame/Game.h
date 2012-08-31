@@ -16,6 +16,8 @@
     int moves;
     int initialPointX; 
     int initialPointY; 
+    int finalPointX; 
+    int finalPointY;
     int level;
 }
 +(CCScene *) scene;
