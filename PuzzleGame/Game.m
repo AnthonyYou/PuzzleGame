@@ -125,6 +125,12 @@
     initialPointX = [[initial objectForKey:@"x"] intValue];
     initialPointY = [[initial objectForKey:@"y"] intValue];
     
+    CCSprite *initialpiece = [CCSprite spriteWithFile:@"DF_B_ON.png"];
+    initialpiece.position = ccp( (40.0),((52.0)*initialPointY)+140);
+    [self addChild:initialpiece];
+    
+    
+    
     for (int x=1;x<=3;x++){
         NSString *positions = [NSString stringWithFormat:@"%i",x];
 
@@ -141,7 +147,7 @@
             
             switch (peca.type) {
                 case 0:
-                    peca.imagem = @"DF_VAZIO.GIF";
+                    peca.imagem = @"DF_VAZIO.png";
                     break;
                 case 1:
                     peca.imagem = @"DF_A_";
@@ -170,7 +176,7 @@
                     break;
             }
             
-            peca = [peca initWithPosition:ccp(((35.0)*y)+94,((33.0)*x)+177)];
+            peca = [peca initWithPosition:ccp(((60.0)*y)+34,((52.0)*x)+140)];
             
             peca.posX = y;
             peca.posY = x;

@@ -21,7 +21,6 @@
 - (id)initWithPosition:(CGPoint) pos;
 - (BOOL)lightOn:(NSString*)entry;
 - (void)lightOff;
-- (BOOL)isLightOn;
 - (void)setConnection:(int) right left:(int)left up:(int)up down:(int)down;
 - (NSMutableDictionary*) getConnections;
 - (NSString*)getOutConnection:(NSString*)entry;

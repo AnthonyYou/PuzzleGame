@@ -22,7 +22,7 @@
         }
     }else{
     
-        if( (self= [super initWithFile:[NSString stringWithFormat:@"%@OFF.gif",imagem]])) {  
+        if( (self= [super initWithFile:[NSString stringWithFormat:@"%@OFF.png",imagem]])) {  
             self.position = pos;
         }
     }
@@ -32,7 +32,7 @@
 - (BOOL)lightOn:(NSString*)entry{
     if (self.type !=0){
         if ([[connections objectForKey:entry] intValue] == 1){
-            [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@ON.gif",imagem]]];
+            [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@ON.png",imagem]]];
             [self setLight:TRUE];
             return TRUE;
         }
@@ -44,7 +44,7 @@
 - (void)lightOff{
     if (self.type != 0){
         [self setLight:FALSE];  
-        [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@OFF.gif",imagem]]];
+        [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"%@OFF.png",imagem]]];
     }
 }
 

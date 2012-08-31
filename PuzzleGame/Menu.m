@@ -40,6 +40,8 @@
         [self addChild: menu];
         
         
+
+        
         
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"intro.mp3"];
