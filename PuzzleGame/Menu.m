@@ -6,9 +6,6 @@
 //
 
 #import "Menu.h"
-#import "Vitory.h"
-#import "Game.h"
-#import "SimpleAudioEngine.h"
 
 @implementation Menu
 
@@ -28,19 +25,18 @@
     if( (self=[super init])) {
     
         
-        CCMenuItemImage *start = [CCMenuItemImage itemFromNormalImage:@"botaoStart.GIF" selectedImage:@"botaoStartB.gif" target:self selector:@selector(startGame:)];
+        CCMenuItemImage *start = [CCMenuItemImage itemFromNormalImage:@"NEWGAME.png" selectedImage:@"NEWGAME_PRESS.png" target:self selector:@selector(startGame:)];
 
-        CCMenuItemImage *exit = [CCMenuItemImage itemFromNormalImage:@"botaoExit.GIF" selectedImage:@"botaoExitB.gif" target:self selector:@selector(exitGame:)];
+        CCMenuItemImage *aboutbutton = [CCMenuItemImage itemFromNormalImage:@"BUTTON_ABOUT.png" selectedImage:@"BUTTON_ABOUT.png" target:self selector:@selector(aboutGame:)];
 
         
-        CCMenu *menu = [CCMenu menuWithItems:start,exit, nil];
+        CCMenu *menu = [CCMenu menuWithItems:start,aboutbutton, nil];
+
         
         [menu alignItemsVertically];
         
         [self addChild: menu];
         
-        
-
         
         
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
@@ -53,17 +49,14 @@
 
 
 -(void) startGame: (CCMenuItem *) menuItem{
-    NSLog(@"start game");
+    //NSLog(@"start game");
 
     [[CCDirector sharedDirector] pushScene:[Game sceneWithParam:@"teste"]];
    // [[CCDirector sharedDirector] pushScene:[Game scene]];
 }
 
--(void) exitGame: (CCMenuItem *) menuItem{
-    NSLog(@"vitory screen");
-    exit(0);
-    
-    //[[CCDirector sharedDirector] pushScene:[Menu scene]];
+-(void) aboutGame: (CCMenuItem *) menuItem{
+    [[CCDirector sharedDirector] pushScene:[About scene]];
 }
 
 

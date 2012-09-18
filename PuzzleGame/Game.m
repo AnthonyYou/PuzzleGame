@@ -58,12 +58,12 @@
     
     CGSize size = [[CCDirector sharedDirector] winSize];
     
-    CCSprite *fundo = [CCSprite spriteWithFile:@"tabuleiro.gif" rect:CGRectMake(0, 0, size.width, size.height)];
-    fundo.position = ccp( size.width/2, size.height/4 );
-    [self addChild:fundo];
+    //CCSprite *fundo = [CCSprite spriteWithFile:@"tabuleiro.gif" rect:CGRectMake(0, 0, size.width, size.height)];
+    //fundo.position = ccp( size.width/2, size.height/4 );
+    //[self addChild:fundo];
     
     
-    CCMenuItemImage *giveup = [CCMenuItemImage itemFromNormalImage:@"botaoDesistir.gif" selectedImage:@"botaoDesistir.gif" target:self selector:@selector(backMenu:)];
+    CCMenuItemImage *giveup = [CCMenuItemImage itemFromNormalImage:@"GIVEUP.png" selectedImage:@"GIVEUP_PRESS.png" target:self selector:@selector(backMenu:)];
     
     CCMenu *menu = [CCMenu menuWithItems:giveup, nil];
     
@@ -73,14 +73,14 @@
     [self addChild: menu];
     
     
-    CCLabelTTF *labellevel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"level%i",level] fontName:@"Marker Felt" fontSize:14];
-    labellevel.position =  ccp( 60 , size.height -47 );
+    CCLabelTTF *labellevel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level: %i",level] fontName:@"Marker Felt" fontSize:20];
+    labellevel.position =  ccp( 35 , size.height -47 );
     [self addChild: labellevel];
     
     
     
-    totalMoves = [CCLabelTTF labelWithString:@"moves: 0" fontName:@"Marker Felt" fontSize:14];
-    totalMoves.position =  ccp( 60 , size.height -147 );
+    totalMoves = [CCLabelTTF labelWithString:@"Total Moves: 0" fontName:@"Marker Felt" fontSize:20];
+    totalMoves.position =  ccp( size.width/2 , size.height -107 );
     [self addChild: totalMoves];
     
     //ccTexParams tp = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
@@ -125,8 +125,8 @@
     initialPointX = [[initial objectForKey:@"x"] intValue];
     initialPointY = [[initial objectForKey:@"y"] intValue];
     
-    CCSprite *initialpiece = [CCSprite spriteWithFile:@"DF_B_ON.png"];
-    initialpiece.position = ccp( (40.0),((52.0)*initialPointY)+140);
+    CCSprite *initialpiece = [CCSprite spriteWithFile:@"INITIAL.png"];
+    initialpiece.position = ccp( (34.5),((52.0)*initialPointY)+140);
     [self addChild:initialpiece];
     
     NSMutableDictionary *final = [levelconfig objectForKey:@"final"];
@@ -134,7 +134,7 @@
     finalPointX = [[final objectForKey:@"x"] intValue];
     finalPointY = [[final objectForKey:@"y"] intValue];
     
-    CCSprite *finalpiece = [CCSprite spriteWithFile:@"DF_B_ON.png"];
+    CCSprite *finalpiece = [CCSprite spriteWithFile:@"FINAL.png"];
     finalpiece.position = ccp( ((60.0)*(finalPointX+1))+34,((52.0))+140);
     [self addChild:finalpiece];
     
@@ -314,7 +314,7 @@
                     [emptyPiece setPosX:posXTemp];
                     [emptyPiece setPosY:posYTemp];
                     moves++;
-                    [totalMoves setString: [NSString stringWithFormat:@"moves: %i",moves]];
+                    [totalMoves setString: [NSString stringWithFormat:@"Total Moves: %i",moves]];
                     
                     //PATH PIECE LIGHT ON
                     [self connectionsPath:[self getFirstPiece] entry:nil];

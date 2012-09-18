@@ -24,11 +24,11 @@
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
-        CCMenuItemImage *start = [CCMenuItemImage itemFromNormalImage:@"botaoStart.GIF" selectedImage:@"botaoStartB.gif" target:self selector:@selector(backMenu:)];
+        CCMenuItemImage *start = [CCMenuItemImage itemFromNormalImage:@"NEWGAME.png" selectedImage:@"NEWGAME_PRESS.png" target:self selector:@selector(backMenu:)];
         
-        CCMenuItemImage *next = [CCMenuItemImage itemFromNormalImage:@"botaox.GIF" selectedImage:@"botaox.gif" target:self selector:@selector(nextLevel:)];
+        CCMenuItemImage *next = [CCMenuItemImage itemFromNormalImage:@"NEXT.png" selectedImage:@"NEXT_PRESS.png" target:self selector:@selector(nextLevel:)];
         
-        CCMenu *menu = [CCMenu menuWithItems:start,next, nil];
+        CCMenu *menu = [CCMenu menuWithItems:next,start, nil];
         menu.position = ccp( 69 , (size.height/3)-50  );
         
         [menu alignItemsVertically];

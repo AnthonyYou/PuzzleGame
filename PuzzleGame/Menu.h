@@ -6,7 +6,10 @@
 //
 
 #import "cocos2d.h"
-
+#import "Vitory.h"
+#import "Game.h"
+#import "SimpleAudioEngine.h"
+#import "About.h"
 
 @interface Menu : CCLayer {
 }
